@@ -1,0 +1,77 @@
+<div class="container bg">
+	
+	<div class="row">
+	    <div class="center col-sm-12">
+			<img src="https://www.dailydot.com/wp-content/uploads/b91/a5/52214a6ee195d6f423c200ffbe80a522.jpg" width="600px" alt="Eat-Da-Burger App">
+	        <h1>Eat-Da-Burger App</h1>
+	        <p></p>
+	    </div>
+  	</div>
+
+	<div class="row">
+	    <div class="center col-sm-12">
+
+			<h2>Add A Burger!</h2>
+
+			<form class="create-update-form" action="/" method="POST">
+
+			  <div class="form-group">
+			    <p>Enter a burger you want to order and click the Submit Order button.</p>
+			    <input type="text" id="ca" name="burger_name">
+			  </div>
+			  
+			  <button class="btn-primary" type="submit">Submit Order</button>
+			</form>
+
+	    </div>
+	
+  	</div>
+
+	<div class="row">
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+				<br >
+        <h3 class="card-title">Burgers Available To Eat!</h3>
+          <ul>
+			  		{{#each burgers}}
+			    	{{#unless this.devoured}}
+			      <li>
+			      	{{this.id}}
+			        {{this.burger_name}}
+
+			        <form action="/{{this.id}}?_method=PUT" method="POST">
+			          <input type="hidden" name="devoured" value="true">
+			          <button class="btn-primary" type="submit">Devour It!</button>
+			        </form>
+
+			      </li>
+			    	{{/unless}}
+			  		{{/each}}
+					</ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="card">
+      <div class="card-body">
+				<br >
+        <h3 class="card-title">Burgers That Have Been Eaten!</h3>
+								
+			  	{{#each burgers}}
+			    {{#if this.devoured}}
+			      <li>
+			      	{{this.id}}
+			        {{this.burger_name}}
+
+			      </li>
+			    {{/if}}
+			  	{{/each}}
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+</div>
